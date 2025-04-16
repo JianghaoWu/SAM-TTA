@@ -1,0 +1,98 @@
+<div align="center">
+
+<h1> Improving the Generalization of Segmentation Foundation Model under Distribution Shift via Weakly Supervised Adaptation </h1>
+
+<a href='https://zhang-haojie.github.io/project-pages/wesam.html'><img src='https://img.shields.io/badge/Project-Page-green'></a> 
+<a href='http://arxiv.org/abs/2312.03502'><img src='https://img.shields.io/badge/Technique-Report-red'></a> 
+
+</div>
+
+
+## 🎈 News
+
+- [2024.2.27] Our work has been accepted to CVPR 2024 🎉
+- [2024.3.1] Training and inference code released
+
+## 🚀 Introduction
+
+<div align="center">
+<img width="800" alt="image" src="asserts/teaser.webp?raw=true">
+</div>
+
+Segment Anything Model was pre-trained on a large-scale dataset but exhibits awkward performance on diverse downstream segmentation tasks. We adapt SAM through weak supervision to enhance its generalization capabilities.
+
+
+## 📻 Overview
+
+<div align="center">
+<img width="800" alt="image" src="asserts/Pipeline.webp?raw=true">
+</div>
+
+The proposed self-training architecture with anchor network regularization and contrastive loss regularization. Red arrows indicates the backpropagation flow.
+
+
+## 📆 TODO
+
+- [x] Release code
+
+## 🎮 Getting Started
+
+### 1. Install Environment
+
+see [INSTALL](INSTALL.md).
+
+### 2. Prepare Dataset and Checkpoints
+
+see [PREPARE](PREPARE.md).
+
+### 3. Adapt with Weak Supervision
+
+```
+# 1 modify configs/config.py 
+# Prompt type: box, point, coarse
+
+# 2 adapt
+python adaptation.py
+```
+
+### 4. Validation
+
+```
+python validate.py --ckpt /path/to/checkpoint
+```
+
+
+## 🖼️ Visualization
+
+<div align="center">
+<img width="800" alt="image" src="asserts/VISUAL.webp?raw=true">
+</div>
+
+
+## 🎫 License
+
+The content of this project itself is licensed under [LICENSE](LICENSE).
+
+## 💡 Acknowledgement
+
+- [SAM](https://github.com/facebookresearch/segment-anything)
+
+- [lightning-sam](https://github.com/luca-medeiros/lightning-sam)
+
+- [SAM-LoRA](https://github.com/JamesQFreeman/Sam_LoRA)
+
+## 🖊️ Citation
+
+If you find this project useful in your research, please consider cite:
+
+```BibTeX
+@inproceedings{zhang2024improving,
+  title={Improving the generalization of segmentation foundation model under distribution shift via weakly supervised adaptation},
+  author={Zhang, Haojie and Su, Yongyi and Xu, Xun and Jia, Kui},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={23385--23395},
+  year={2024}
+}
+```
+
+conda env create -f environment.yaml
