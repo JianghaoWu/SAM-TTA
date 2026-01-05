@@ -1,98 +1,98 @@
-<div align="center">
+# SAM-TTA: SAM-aware Test-time Adaptation for Universal Medical Image Segmentation
 
-<h1> Improving the Generalization of Segmentation Foundation Model under Distribution Shift via Weakly Supervised Adaptation </h1>
+Official implementation of the paper:
 
-<a href='https://zhang-haojie.github.io/project-pages/wesam.html'><img src='https://img.shields.io/badge/Project-Page-green'></a> 
-<a href='http://arxiv.org/abs/2312.03502'><img src='https://img.shields.io/badge/Technique-Report-red'></a> 
+**SAM-aware Test-time Adaptation for Universal Medical Image Segmentation**  
 
-</div>
+📄 [Paper](https://arxiv.org/abs/2506.05221)  
+🌐 [Project Page](https://github.com/JianghaoWu/SAM-TTA)
 
+---
 
-## 🎈 News
+## 🔍 Overview
 
-- [2024.2.27] Our work has been accepted to CVPR 2024 🎉
-- [2024.3.1] Training and inference code released
+**SAM-TTA** is a lightweight and label-free **test-time adaptation (TTA)** framework that adapts the Segment Anything Model (SAM) to diverse medical imaging domains **without retraining or access to source data**.
 
-## 🚀 Introduction
+While SAM exhibits strong zero-shot generalization on natural images, its direct application to medical images is limited by:
 
-<div align="center">
-<img width="800" alt="image" src="asserts/teaser.webp?raw=true">
-</div>
+- **Input-level discrepancy**: SAM expects 3-channel RGB images, whereas most medical scans (e.g., CT, MRI) are single-channel grayscale.
+- **Semantic-level discrepancy**: Medical targets often have ambiguous boundaries and domain-specific structures, which differ substantially from natural objects.
+<p align="center">
+  <img src="imgs/sam-tta-motivation.png" width="85%">
+</p>
 
-Segment Anything Model was pre-trained on a large-scale dataset but exhibits awkward performance on diverse downstream segmentation tasks. We adapt SAM through weak supervision to enhance its generalization capabilities.
+To address these challenges, SAM-TTA introduces **input-level adaptation** and **semantic-level alignment** that are optimized *on-the-fly* during inference.
 
+---
 
-## 📻 Overview
+## 🧠 Method Overview
 
-<div align="center">
-<img width="800" alt="image" src="asserts/Pipeline.webp?raw=true">
-</div>
-
-The proposed self-training architecture with anchor network regularization and contrastive loss regularization. Red arrows indicates the backpropagation flow.
-
-
-## 📆 TODO
-
-- [x] Release code
-
-## 🎮 Getting Started
-
-### 1. Install Environment
-
-see [INSTALL](INSTALL.md).
-
-### 2. Prepare Dataset and Checkpoints
-
-see [PREPARE](PREPARE.md).
-
-### 3. Adapt with Weak Supervision
-
-```
-# 1 modify configs/config.py 
-# Prompt type: box, point, coarse
-
-# 2 adapt
-python adaptation.py
-```
-
-### 4. Validation
-
-```
-python validate.py --ckpt /path/to/checkpoint
-```
+<p align="center">
+  <img src="imgs/sam-tta-method.png" width="85%">
+</p>
 
 
-## 🖼️ Visualization
 
-<div align="center">
-<img width="800" alt="image" src="asserts/VISUAL.webp?raw=true">
-</div>
+## ✨ Key Features
 
+- **Label-free adaptation**  
+  No annotations or source data required at test time
 
-## 🎫 License
+- **Lightweight and efficient**  
+  Only a small set of parameters are updated  
+  Average adaptation time: **0.364 s per image**
 
-The content of this project itself is licensed under [LICENSE](LICENSE).
+- **Universal applicability**  
+  Evaluated on **8 public datasets** covering MRI, CT, and endoscopic images
 
-## 💡 Acknowledgement
+- **Robust under distribution shift**  
+  Consistently outperforms existing TTA methods and, in several OOD settings, even surpasses fully fine-tuned SAM variants
 
-- [SAM](https://github.com/facebookresearch/segment-anything)
+---
 
-- [lightning-sam](https://github.com/luca-medeiros/lightning-sam)
+## 📊 Quantitative Results (Dice Score, %)
 
-- [SAM-LoRA](https://github.com/JamesQFreeman/Sam_LoRA)
+| Method | Pancreas (In-Dist) | Pancreatic Cancer (OOD) | BraTS Average |
+|------|-------------------:|------------------------:|--------------:|
+| SAM (Zero-shot) | 63.79 | 81.57 | 81.96 |
+| MedSAM (Fine-tuned) | 67.71 | 69.50 | 86.36 |
+| SAM-Med2D (Fine-tuned) | 79.36 | 73.68 | 77.86 |
+| **SAM-TTA (Ours)** | **74.41** | **84.68** | **88.11** |
 
-## 🖊️ Citation
+> SAM-TTA achieves strong and stable improvements across both in-distribution and out-of-distribution scenarios.
 
-If you find this project useful in your research, please consider cite:
+---
 
-```BibTeX
-@inproceedings{zhang2024improving,
-  title={Improving the generalization of segmentation foundation model under distribution shift via weakly supervised adaptation},
-  author={Zhang, Haojie and Su, Yongyi and Xu, Xun and Jia, Kui},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={23385--23395},
-  year={2024}
+## 🧪 Evaluated Datasets
+
+- **Brain Tumor Segmentation**
+  - BraTS-SSA (T2W, T2-FLAIR)
+  - BraTS-PED (T2W, T2-FLAIR)
+
+- **Abdominal Imaging**
+  - Pancreas (MRI, AMOS)
+  - Pancreatic Cancer (CT, MSWAL)
+
+- **Endoscopic Imaging**
+  - CVC-ColonDB
+  - Kvasir-SEG
+
+---
+
+## 📂 Code Availability
+
+🚧 **The official code is currently being prepared and will be released soon.**
+
+---
+
+## 📝 Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@article{wu2025samtta,
+  title={SAM-aware Test-time Adaptation for Universal Medical Image Segmentation},
+  author={Wu, Jianghao and Wu, Yicheng and Xie, Yutong and Bai, Wenjia and Zhang, You and Tang, Feilong and Li, Yulong and Razzak, Imran and Schmidt, Daniel F and George, Yasmeen},
+  journal={arXiv:2506.05221},
+  year={2025}
 }
-```
-
-conda env create -f environment.yaml
