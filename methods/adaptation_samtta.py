@@ -26,6 +26,7 @@ from model import Model
 from sam_lora import LoRA_Sam
 from utils.eval_utils import AverageMeter, calculate_metrics, get_prompts
 from utils.nonlinear_net import DynamicBezierTransform2D
+from utils.nonlinear import LearnableBezierTransform
 from utils.tools import copy_model, create_csv, momentum_update, reduce_instances
 
 
@@ -56,7 +57,8 @@ def train_sam(
     case_results = []
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    transform_auto = DynamicBezierTransform2D(degree=3, num_curves=3).to(device)
+    # transform_auto = DynamicBezierTransform2D(degree=3, num_curves=3).to(device)
+    transform_auto = LearnableBezierTransform().to(device)
     optimizer_auto = optim.Adam(transform_auto.parameters(), lr=0.1)
 
     w_max = 0.0
