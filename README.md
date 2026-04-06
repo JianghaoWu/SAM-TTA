@@ -126,8 +126,8 @@ We provide pre-processed 2D slices (NIfTI format) for two datasets used in our e
 
 | Dataset | Download |
 |---------|----------|
-| **Pancreas** (AMOS 2022, MRI) | [OneDrive — coming soon](#) |
-| **BraTS-PED T2W 2D slices** | [OneDrive — coming soon](#) |
+| **Pancreas** (AMOS 2022, MRI) | [OneDrive](https://drive.google.com/drive/folders/1aE4rVd-zH-CCml6y2yJDSRKDuWP9JAV8?usp=drive_link) |
+| **BraTS-PED T2W 2D slices** | [OneDrive](https://drive.google.com/drive/folders/1aE4rVd-zH-CCml6y2yJDSRKDuWP9JAV8?usp=drive_link) |
 
 > **Note:** By downloading these files, you agree to comply with the original data usage agreements of the respective challenge organizers. These pre-processed versions are provided solely to facilitate reproducibility of our experiments.
 
