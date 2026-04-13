@@ -114,7 +114,7 @@ We evaluate on eight public datasets:
 | BraTS-PED 2024 (T2W / T2F) | MRI | [BraTS 2024 Challenge](https://www.synapse.org/brats2024) |
 | BraTS-SSA 2023 (T2W / T2F) | MRI | [BraTS 2023 Challenge](https://www.synapse.org/brats2023) |
 | Pancreas (AMOS 2022) | MRI | [AMOS Challenge](https://amos22.grand-challenge.org/) |
-| Pancreatic Cancer (MSWAL) | CT | [MSWAL Dataset](https://github.com/ljwztc/CLIP-Driven-Universal-Model) |
+| Pancreatic Cancer (MSWAL) | CT | [MSWAL Dataset](https://github.com/haochen-MBZUAI/MSWAL-) |
 | CVC-ColonDB | Endoscopy | [CVC-ColonDB](http://mv.cvc.uab.es/projects/colon-qa/cvccolondb) |
 | Kvasir-SEG | Endoscopy | [Kvasir-SEG](https://datasets.simula.no/kvasir-seg/) |
 
